@@ -32,10 +32,12 @@ function BottomTabNavigator() {
     return (
         <BottomTab.Navigator>
             <BottomTab.Screen name="Coder" component={Coder} options={() => ({
-                tabBarIcon: () => <Icon name={'lock'} type={"font-awesome"}/>
+                title: 'Кодировать',
+                tabBarIcon: ({focused}) => <Icon name={'lock'} type={"font-awesome"} color={focused ? '#2196f3' : 'gray'}/>
             })}/>
             <BottomTab.Screen name="Decoder" component={Decoder} options={() => ({
-                tabBarIcon: () => <Icon name={'unlock'} type={"font-awesome"}/>
+                title: 'Декодировать',
+                tabBarIcon: ({focused}) => <Icon name={'unlock'} type={"font-awesome"} color={focused ? '#2196f3' : 'gray'}/>
             })}/>
         </BottomTab.Navigator>
     );
@@ -45,13 +47,14 @@ function BottomTabNavigator() {
 function CustomDrawerContent(props) {
     return (
         <DrawerContentScrollView {...props}>
-            <DrawerItem label="Coder | Decoder"
+            <DrawerItem label="Cipher Master"
                         style={{height: 80}}
                         labelStyle={{
-                            textTransform: "uppercase",
                             paddingLeft: 10,
                             textAlignVertical: "bottom",
-                            height: '100%'
+                            height: '100%',
+                            fontWeight: 'bold',
+                            fontSize: 16
                         }}
             />
             <DrawerItemList {...props} />

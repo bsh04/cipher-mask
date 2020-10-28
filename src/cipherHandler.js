@@ -3,7 +3,7 @@ export const cipherHandler = (isCoder, cipherType, text, key) => {
     let newText = text.replace(/ /g, '')
     switch (cipherType) {
         case 'a1z26':
-            isCoder ? a1z26HandlerCoder(newText) : a1z26HandlerDecoder(newText)
+            isCoder ? a1z26HandlerCoder(text) : a1z26HandlerDecoder(text)
             break
         case 'rot1':
             rot1Handler(isCoder, newText, 1)

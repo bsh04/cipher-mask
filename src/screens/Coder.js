@@ -1,30 +1,48 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native'
+import React, {useContext, useEffect, useState} from 'react';
+import {ScrollView, Text, View, Clipboard, TouchableOpacity} from 'react-native'
 import Header from "../components/header";
 import {DrawerToggle} from "../components/drawerToggle";
 import {CustomInput} from "../components/customInput";
 import {CustomPicker} from "../components/customPicker";
 import CustomButton from "../components/customButton";
 import {cipherHandler} from "../cipherHandler";
+import {NotificationContext} from "../context/notificationContext";
 
 export const Coder = (props) => {
 
     const [text, setText] = useState('')
+    const [key, setKey] = useState('')
     const [selectedValue, setSelectedValue] = useState("rot1")
     const [disabled, setDisabled] = useState(true)
     const [result, setResult] = useState('')
 
+    const showNot = useContext(NotificationContext)
+
     useEffect(() => {
-        if (text.trim()) {
-            setDisabled(false)
+        if (selectedValue === 'vigener') {
+            if (key.trim() !== '' && text.trim() !== '') {
+                setDisabled(false)
+            } else {
+                setDisabled(true)
+            }
         } else {
-            setDisabled(true)
+            if (text.trim()) {
+                setDisabled(false)
+            } else {
+                setDisabled(true)
+            }
         }
-    }, [text])
+    }, [text, key])
+
+    useEffect(() => {
+        setKey('')
+        setText('')
+        setResult('')
+    }, [selectedValue])
 
 
     const handleCoder = () => {
-        setResult(cipherHandler(selectedValue, text))
+        setResult(cipherHandler(true, selectedValue, text, key))
     }
 
     return (
@@ -40,16 +58,49 @@ export const Coder = (props) => {
                     setSelectedValue={setSelectedValue}
                 />
                 <CustomInput
-                    placeholder={'Вводите текст, который необходимо зашифровать'}
+                    placeholder={'Вводите текст, который надо зашифровать'}
                     value={text}
                     onChange={setText}
+                    onEndEditing={selectedValue === 'vigener' ? null : handleCoder}
                 />
+                {
+                    selectedValue === 'vigener'
+                    &&
+                    <CustomInput
+                        placeholder={'Введите ключ'}
+                        value={key}
+                        numberOfLines={1}
+                        onChange={setKey}
+                        onEndEditing={handleCoder}
+                    />
+                }
                 <CustomButton
                     title={'Зашифровать'}
                     onPress={handleCoder}
                     disabled={disabled}
                 />
-                <Text>{result}</Text>
+                <View style={{padding: 20}}>
+                    <Text style={{
+                        paddingBottom: 10,
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                        opacity: .5,
+                        color: 'black'
+                    }}>Ниже будет показан результат работы программы</Text>
+                    <View style={{backgroundColor: '#ccc', height: 200, paddingVertical: 5}}>
+                        <ScrollView>
+                            <TouchableOpacity
+                                activeOpacity={.1}
+                                onLongPress={() => {
+                                    showNot(true)
+                                    Clipboard.setString(result)
+                                }}
+                            >
+                                <Text style={{margin: 15, lineHeight: 25}}>{result}</Text>
+                            </TouchableOpacity>
+                        </ScrollView>
+                    </View>
+                </View>
             </ScrollView>
         </View>
     );

@@ -1,13 +1,24 @@
 import React from 'react';
-import {View} from 'react-native'
+import {Text, View} from 'react-native'
 import Header from "../components/header";
+import {BackButton} from "../components/backButton";
 
-export const AboutApp = () => {
+export const AboutApp = (props) => {
     return (
         <View>
             <Header
                 title={'О приложении'}
+                headerLeftComponent={<BackButton navigation={props.navigation}/>}
             />
+            <View style={{height: '70%', alignItems: 'center', justifyContent: "center", paddingHorizontal: 20}}>
+                <Text style={{fontSize: 18}}>Всем привет!{'\n'}</Text>
+                <Text style={{fontSize: 14, width: '100%', textAlign: 'left'}}>Данное приложение носит название Cipher Master.{'\n'}</Text>
+                <Text style={{width: '100%', textAlign: "justify", }}>Cipher Master поможет вам в шифровке и расшифровки текста используя различные алгоритмы, полный
+                    список таких алгоритмов можно посмотреть <Text
+                        style={{color: '#2196f3', textDecorationLine: "underline"}}
+                        onPress={() => props.navigation.navigate('List')}>здесь</Text>.{'\n'}</Text>
+                <Text style={{width: '100%', textAlign: "justify", }}>Приложение разработал: Власов Дмитрий</Text>
+            </View>
         </View>
     );
 };

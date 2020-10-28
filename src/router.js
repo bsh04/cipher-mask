@@ -18,6 +18,7 @@ import {Icon} from "react-native-elements";
 const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const CipherStack = createStackNavigator();
+const AboutStack = createStackNavigator();
 
 function CipherStackNavigator() {
     return (
@@ -28,16 +29,27 @@ function CipherStackNavigator() {
     );
 }
 
+function AboutStackNavigator() {
+    return (
+        <AboutStack.Navigator screenOptions={{headerShown: false}}>
+            <AboutStack.Screen name="About" component={AboutApp}/>
+            <AboutStack.Screen name="List" component={ListCipher}/>
+        </AboutStack.Navigator>
+    );
+}
+
 function BottomTabNavigator() {
     return (
         <BottomTab.Navigator>
             <BottomTab.Screen name="Coder" component={Coder} options={() => ({
                 title: 'Кодировать',
-                tabBarIcon: ({focused}) => <Icon name={'lock'} type={"font-awesome"} color={focused ? '#2196f3' : 'gray'}/>
+                tabBarIcon: ({focused}) => <Icon name={'lock'} type={"font-awesome"}
+                                                 color={focused ? '#2196f3' : 'gray'}/>
             })}/>
             <BottomTab.Screen name="Decoder" component={Decoder} options={() => ({
                 title: 'Декодировать',
-                tabBarIcon: ({focused}) => <Icon name={'unlock'} type={"font-awesome"} color={focused ? '#2196f3' : 'gray'}/>
+                tabBarIcon: ({focused}) => <Icon name={'unlock'} type={"font-awesome"}
+                                                 color={focused ? '#2196f3' : 'gray'}/>
             })}/>
         </BottomTab.Navigator>
     );
@@ -56,6 +68,8 @@ function CustomDrawerContent(props) {
                             fontWeight: 'bold',
                             fontSize: 16
                         }}
+                        onPress={() => {
+                        }}
             />
             <DrawerItemList {...props} />
         </DrawerContentScrollView>
@@ -72,7 +86,7 @@ const DrawerNavigator = () => {
         >
             <Drawer.Screen name={'Главная'} component={BottomTabNavigator}/>
             <Drawer.Screen name={'Список шифров'} component={CipherStackNavigator}/>
-            <Drawer.Screen name={'О приложении'} component={AboutApp}/>
+            <Drawer.Screen name={'О приложении'} component={AboutStackNavigator}/>
         </Drawer.Navigator>
     )
 }

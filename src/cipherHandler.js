@@ -23,7 +23,6 @@ const alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', '�
 
 const a1z26HandlerCoder = (text) => {
     let localText = text.toLowerCase()
-    console.log(localText)
     for (let i = 0; i < localText.length; i++) {
         for (let j = 0; j < alphabet.length; j++) {
             if (localText[i] === alphabet[j]) {
@@ -97,8 +96,6 @@ const vigenerHandler = (isCoder, text, key) => {
     if (steps.length > extraText.length) {
         steps = steps.slice(0, extraText.length)
     }
-
-    console.log(steps.length, extraText.length)
 
     result = ''
 

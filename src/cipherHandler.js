@@ -13,6 +13,7 @@ export const cipherHandler = (isCoder, cipherType, text, key) => {
             break
         case 'vigener':
             vigenerHandler(isCoder, newText, key)
+            break
     }
     return result
 }

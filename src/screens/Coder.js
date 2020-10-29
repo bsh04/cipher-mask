@@ -61,7 +61,8 @@ export const Coder = (props) => {
                     placeholder={'Вводите текст, который надо зашифровать'}
                     value={text}
                     onChange={setText}
-                    onEndEditing={selectedValue === 'vigener' ? null : handleCoder}
+                    onSubmitEditing={selectedValue === 'vigener' ? null : handleCoder}
+                    multiline={true}
                 />
                 {
                     selectedValue === 'vigener'
@@ -71,7 +72,9 @@ export const Coder = (props) => {
                         value={key}
                         numberOfLines={1}
                         onChange={setKey}
-                        onEndEditing={handleCoder}
+                        onSubmitEditing={handleCoder}
+                        inputContainerStyle={{padding: 0, paddingHorizontal: 10}}
+                        multiline={false}
                     />
                 }
                 <CustomButton
@@ -87,7 +90,7 @@ export const Coder = (props) => {
                         opacity: .5,
                         color: 'black'
                     }}>Ниже будет показан результат работы программы</Text>
-                    <View style={{backgroundColor: '#ccc', height: 200, paddingVertical: 5}}>
+                    <View style={{backgroundColor: '#ddd', height: 200, paddingVertical: 5, borderColor: '#444', borderWidth: 1, borderRadius: 5}}>
                         <ScrollView>
                             <TouchableOpacity
                                 activeOpacity={.1}
@@ -96,7 +99,7 @@ export const Coder = (props) => {
                                     Clipboard.setString(result)
                                 }}
                             >
-                                <Text style={{margin: 15, lineHeight: 25}}>{result}</Text>
+                                <Text style={{margin: 15, lineHeight: 25, color: 'black', fontSize: 16, opacity: .8}}>{result}</Text>
                             </TouchableOpacity>
                         </ScrollView>
                     </View>

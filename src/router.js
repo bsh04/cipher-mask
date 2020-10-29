@@ -10,7 +10,9 @@ import {
     Coder,
     AboutApp,
     Cipher,
-    ListCipher
+    ListCipher,
+    Algorithm,
+    AlgorithmsList
 } from './screens/index'
 import {View} from "react-native";
 import {Icon} from "react-native-elements";
@@ -19,6 +21,7 @@ const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const CipherStack = createStackNavigator();
 const AboutStack = createStackNavigator();
+const AlgorithmStack = createStackNavigator();
 
 function CipherStackNavigator() {
     return (
@@ -38,9 +41,18 @@ function AboutStackNavigator() {
     );
 }
 
+function AlgorithmStackNavigator() {
+    return (
+        <AlgorithmStack.Navigator screenOptions={{headerShown: false}}>
+            <AlgorithmStack.Screen name="AlgorithmList" component={AlgorithmsList}/>
+            <AlgorithmStack.Screen name="Algorithm" component={Algorithm}/>
+        </AlgorithmStack.Navigator>
+    );
+}
+
 function BottomTabNavigator() {
     return (
-        <BottomTab.Navigator>
+        <BottomTab.Navigator tabBarOptions={{style: {height: 60}, tabStyle: {alignItems: 'center', flexDirection: 'column'}}}>
             <BottomTab.Screen name="Coder" component={Coder} options={() => ({
                 title: 'Кодировать',
                 tabBarIcon: ({focused}) => <Icon name={'lock'} type={"font-awesome"}
@@ -86,6 +98,7 @@ const DrawerNavigator = () => {
         >
             <Drawer.Screen name={'Главная'} component={BottomTabNavigator}/>
             <Drawer.Screen name={'Список шифров'} component={CipherStackNavigator}/>
+            <Drawer.Screen name={'Список алгоритмов'} component={AlgorithmStackNavigator}/>
             <Drawer.Screen name={'О приложении'} component={AboutStackNavigator}/>
         </Drawer.Navigator>
     )

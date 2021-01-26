@@ -2,13 +2,14 @@ import React from 'react';
 import {Text, View} from 'react-native'
 import Header from "../components/header";
 import {BackButton} from "../components/backButton";
+import {DrawerToggle} from "../components/drawerToggle";
 
 export const AboutApp = (props) => {
     return (
         <View>
             <Header
                 title={'О приложении'}
-                headerLeftComponent={<BackButton navigation={props.navigation}/>}
+                headerLeftComponent={<DrawerToggle navigation={props.navigation}/>}
             />
             <View style={{height: '70%', alignItems: 'center', justifyContent: "center", paddingHorizontal: 20}}>
                 <Text style={{fontSize: 18}}>Всем привет!{'\n'}</Text>

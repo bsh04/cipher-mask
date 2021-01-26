@@ -11,11 +11,11 @@ export const Rating = ({rating}) => {
 
         for (let i = 1; i < 6; i++) {
             if (i <= Math.floor(rating)) {
-                arr.push(<Icon key={i} type={"font-awesome"} name={'star'} size={device.width * .05}/>)
+                arr.push(<Icon key={i} type={"font-awesome"} name={'star'} size={device.width * .05} color={"#ffc400"}/>)
             } else if (rating > Math.floor(rating) && i - rating < 1) {
-                arr.push(<Icon key={i} type={"font-awesome"} name={'star-half-full'} size={device.width * .05}/>)
+                arr.push(<Icon key={i} type={"font-awesome"} name={'star-half-full'} size={device.width * .05} color={"#ffc400"}/>)
             } else {
-                arr.push(<Icon key={i} type={"font-awesome"} name={'star-o'} size={device.width * .05}/>)
+                arr.push(<Icon key={i} type={"font-awesome"} name={'star-o'} size={device.width * .05} color={"#ffc400"}/>)
             }
         }
         return arr

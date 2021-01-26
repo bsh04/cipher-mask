@@ -90,7 +90,7 @@ export const Coder = (props) => {
                         opacity: .5,
                         color: 'black'
                     }}>Ниже будет показан результат работы программы</Text>
-                    <View style={{backgroundColor: '#ddd', height: 200, paddingVertical: 5, borderColor: '#444', borderWidth: 1, borderRadius: 5}}>
+                    <View style={{backgroundColor: '#eceff1', height: 200, paddingVertical: 5, borderColor: '#006064', borderWidth: 1, borderRadius: 5}}>
                         <ScrollView>
                             <TouchableOpacity
                                 activeOpacity={.1}

@@ -3,13 +3,14 @@ import {ScrollView, Text, View} from "react-native";
 import Header from "../components/header";
 import {BackButton} from "../components/backButton";
 import {ListCiphers} from "../components/listCiphers";
+import {DrawerToggle} from "../components/drawerToggle";
 
 export const ListCipher = (props) => {
     return (
         <View style={{flex: 1}}>
             <Header
                 title={'Список шифров'}
-                headerLeftComponent={<BackButton navigation={props.navigation}/>}
+                headerLeftComponent={<DrawerToggle navigation={props.navigation}/>}
             />
             <ScrollView style={{flex: 1, padding: 10}}>
                 <Text style={{paddingBottom: 10, fontSize: 15, textAlign: "justify", borderBottomWidth: 1, borderBottomColor: '#ccc'}}>Здесь предствлены все шифры, которые используются в данном проекте. Это далеко не все способы шифрования текста, а лишь самые простые из них.

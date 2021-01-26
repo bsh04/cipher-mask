@@ -6,7 +6,7 @@ const Header = ({headerLeftComponent, headerRightComponent, title}) => {
 
     return (
         <View>
-            <StatusBar backgroundColor='#1976d3'/>
+            <StatusBar backgroundColor='#455a64'/>
             <View style={styles.container}>
                 <View style={styles.leftItems}>
                     {headerLeftComponent ? headerLeftComponent : null}
@@ -19,7 +19,7 @@ const Header = ({headerLeftComponent, headerRightComponent, title}) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#2196f3',
+        backgroundColor: '#546e7a',
         height: 56,
         width: device.width,
         paddingHorizontal: 20,

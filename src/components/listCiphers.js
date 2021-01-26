@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         height: '100%',
         paddingLeft: 10,
         fontSize: 14,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontStyle: "italic"
     }
 })

@@ -14,7 +14,7 @@ export const CustomPicker = ({label, selectedValue, setSelectedValue}) => {
     return (
         <View style={{width: device.width, alignItems: "center", paddingVertical: 10}}>
             <Text style={{paddingVertical: 10, fontWeight: 'bold'}}>{label}</Text>
-            <View style={{borderRadius: 10, width: device.width * .6, alignItems: "center", borderColor: '#ccc', borderWidth: 1}}>
+            <View style={{borderRadius: 10, width: device.width * .6, alignItems: "center", borderColor: '#607d8b', borderWidth: 2}}>
                 <Picker
                     selectedValue={selectedValue}
                     style={{ height: 50, width: device.width * .5, borderColor: 'black', borderWidth: 1}}

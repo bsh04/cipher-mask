@@ -14,7 +14,7 @@ const CustomButton = ({title, onPress, disabled}) => {
             title={title}
             onPress={disabled ? disabledAlert : onPress}
             containerStyle={{width: device.width, alignItems: "center"}}
-            buttonStyle={[disabled ? {backgroundColor: '#ccc'} : {}, {width: device.width * .5, borderRadius: 10}]}
+            buttonStyle={[disabled ? {backgroundColor: '#ccc'} : {backgroundColor: '#43a047'}, {width: device.width * .5, borderRadius: 10}]}
             titleStyle={disabled ? {color: 'black'} : {}}
         />
     );

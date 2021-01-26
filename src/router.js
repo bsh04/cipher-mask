@@ -14,7 +14,7 @@ import {
     Algorithm,
     AlgorithmsList
 } from './screens/index'
-import {View} from "react-native";
+import {View, Text} from "react-native";
 import {Icon} from "react-native-elements";
 
 const BottomTab = createBottomTabNavigator();
@@ -52,14 +52,19 @@ function AlgorithmStackNavigator() {
 
 function BottomTabNavigator() {
     return (
-        <BottomTab.Navigator tabBarOptions={{style: {height: 60}, tabStyle: {alignItems: 'center', flexDirection: 'column'}}}>
+        <BottomTab.Navigator tabBarOptions={{
+            style: {height: 60, backgroundColor: "#e0e0e0"},
+            tabStyle: {alignItems: 'center', flexDirection: 'column', paddingBottom: 5,}
+        }}>
             <BottomTab.Screen name="Coder" component={Coder} options={() => ({
-                title: 'Кодировать',
+                tabBarLabel: ({focused}) => <Text
+                    style={{color: focused ? '#2196f3' : 'gray', fontStyle: "italic"}}>Кодировать</Text>,
                 tabBarIcon: ({focused}) => <Icon name={'lock'} type={"font-awesome"}
                                                  color={focused ? '#2196f3' : 'gray'}/>
             })}/>
             <BottomTab.Screen name="Decoder" component={Decoder} options={() => ({
-                title: 'Декодировать',
+                tabBarLabel: ({focused}) => <Text
+                    style={{color: focused ? '#2196f3' : 'gray', fontStyle: "italic"}}>Декодировать</Text>,
                 tabBarIcon: ({focused}) => <Icon name={'unlock'} type={"font-awesome"}
                                                  color={focused ? '#2196f3' : 'gray'}/>
             })}/>
@@ -91,10 +96,15 @@ function CustomDrawerContent(props) {
 const DrawerNavigator = () => {
     return (
         <Drawer.Navigator
+            drawerType={"slide"}
             initialRouteName="Coder"
             drawerPosition="left"
             drawerContent={props => <CustomDrawerContent {...props} />}
-            drawerContentOptions={{itemStyle: {paddingLeft: 10, marginVertical: 0}}}
+            drawerContentOptions={{
+                itemStyle: {paddingLeft: 10, marginVertical: 0},
+                labelStyle: {color: "#4a148c", fontSize: 16},
+                style: {backgroundColor: "#eceff1"}
+            }}
         >
             <Drawer.Screen name={'Главная'} component={BottomTabNavigator}/>
             <Drawer.Screen name={'Список шифров'} component={CipherStackNavigator}/>

@@ -39,7 +39,7 @@ export const Algorithm = (props) => {
             />
             <ScrollView style={{flex: 1, paddingHorizontal: 10, paddingVertical: 15}}>
                 <Text style={{textAlign: "justify"}}>Алгоритм Луна предназначен для вычисления контрольной цифры номера пластиковой карты в соответствии со стандартом ISO/IEC 7812.</Text>
-                <Text style={{textAlign: "justify"}}>{'\n'}Введите номер карты, чтобы узнать, действительная ли она...</Text>
+                <Text style={{textAlign: "justify"}}>{'\n'}Введите номер карты, чтобы узнать, действительная ли она.</Text>
                 <View style={{flex: 1, alignItems: 'center'}}>
                     <CustomInput
                         value={card}
